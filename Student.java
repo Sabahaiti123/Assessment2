@@ -7,30 +7,54 @@
  */
 public class Student
 {
-    private String name;
-    private String studentID;
-    private double assignment1;
-    private double assignment2;
-    private double assignment3;
+    // Define a class to represent a student
+    private String lastName;
+    private String firstName;
+    private int studentID;
+    private double[] marks;
     private double totalMarks;
     
     /**
      * Contructor for objects of class Student
      */
-    public Student(String name, String studentID, double assignment1, double assignment2, double assignment3){
-        this.name = name;
+    public Student(String lastName, String firstName, int studentID, double[] marks){
+        
+        this.lastName = lastName;
+        this.firstName = firstName;
         this.studentID = studentID;
-        this.assignment1 = assignment1;
-        this.assignment2 = assignment2;
-        this.assignment3 = assignment3;
-        this.totalMarks = assignment1 + assignment2 + assignment3;
+        this.marks = marks;
+        this.totalMarks = 0;
+        
+        for (double mark : marks){
+            
+            this.totalMarks += mark;
+            
+        }
     }
     
-    // Method to display the student information
+    /**
+     * methods to access the properties
+     */
+    public String getlastName(){
+        return lastName;
+    }
+    
+    public String getfirstName(){
+        return firstName;
+    }
+    
+    public int getStudentID(){
+        return studentID;
+    }
+    
+    public double getTotalMarks(){
+        return totalMarks;
+    }
+    
     /**
      * Method to display the student information
      */
     public void displayStudentInfo(){
-        System.out.println();
+        System.out.println(lastName + " " + firstName + " (" + studentID + ") - Total Marks: " + totalMarks);
     }
 }
