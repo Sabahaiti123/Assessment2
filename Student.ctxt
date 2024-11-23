@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Student
+comment0.text=\n\ Write\ a\ description\ of\ class\ Student\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=name\ studentID\ assignment1\ assignment2\ assignment3
+comment1.target=Student(java.lang.String,\ java.lang.String,\ double,\ double,\ double)
+comment1.text=\n\ Contructor\ for\ objects\ of\ class\ Student\n
+comment2.params=
+comment2.target=void\ displayStudentInfo()
+comment2.text=\n\ Method\ to\ display\ the\ student\ information\n
+numComments=3
