@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Student here.
  *
@@ -10,26 +9,24 @@ public class Student
     // Define a class to represent a student
     private String lastName;
     private String firstName;
-    private int studentID;
-    private double[] marks;
+    private String studentID;
+    private double mark1;
+    private double mark2;
+    private double mark3;
     private double totalMarks;
     
     /**
      * Contructor for objects of class Student
      */
-    public Student(String lastName, String firstName, int studentID, double[] marks){
+    public Student(String lastName, String firstName, String studentID, double mark1, double mark2, double mark3){
         
         this.lastName = lastName;
         this.firstName = firstName;
         this.studentID = studentID;
-        this.marks = marks;
-        this.totalMarks = 0;
+        this.mark1 = mark1;
+        this.mark2 = mark2;
+        this.mark3 = mark3;
         
-        for (double mark : marks){
-            
-            this.totalMarks += mark;
-            
-        }
     }
     
     /**
@@ -43,18 +40,16 @@ public class Student
         return firstName;
     }
     
-    public int getStudentID(){
+    public String getStudentID(){
         return studentID;
     }
     
     public double getTotalMarks(){
-        return totalMarks;
+        return mark1 + mark2 + mark3;
     }
     
-    /**
-     * Method to display the student information
-     */
-    public void displayStudentInfo(){
-        System.out.println(lastName + " " + firstName + " (" + studentID + ") - Total Marks: " + totalMarks);
+    @Override
+    public String toString(){
+        return lastName + " " + firstName + " (" + studentID + ") - Total Marks: " + totalMarks;
     }
 }

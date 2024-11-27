@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Student
 comment0.text=\n\ Write\ a\ description\ of\ class\ Student\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=lastName\ firstName\ studentID\ marks
-comment1.target=Student(java.lang.String,\ java.lang.String,\ int,\ double[])
+comment1.params=lastName\ firstName\ studentID\ mark1\ mark2\ mark3
+comment1.target=Student(java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double,\ double)
 comment1.text=\n\ Contructor\ for\ objects\ of\ class\ Student\n
 comment2.params=
 comment2.target=java.lang.String\ getlastName()
@@ -10,10 +10,9 @@ comment2.text=\n\ methods\ to\ access\ the\ properties\n
 comment3.params=
 comment3.target=java.lang.String\ getfirstName()
 comment4.params=
-comment4.target=int\ getStudentID()
+comment4.target=java.lang.String\ getStudentID()
 comment5.params=
 comment5.target=double\ getTotalMarks()
 comment6.params=
-comment6.target=void\ displayStudentInfo()
-comment6.text=\n\ Method\ to\ display\ the\ student\ information\n
+comment6.target=java.lang.String\ toString()
 numComments=7
