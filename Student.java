@@ -4,39 +4,39 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Student
-{
+public class Student {
     // Define a class to represent a student
     private String lastName;
     private String firstName;
     private String studentID;
-    private double mark1;
-    private double mark2;
-    private double mark3;
+    private double assignment1;
+    private double assignment2;
+    private double assignment3;
     private double totalMarks;
     
     /**
-     * Contructor for objects of class Student
+     * Contructs a Student object with specified details.
      */
-    public Student(String lastName, String firstName, String studentID, double mark1, double mark2, double mark3){
+    public Student(String lastName, String firstName, String studentID, double assignment1, double assignment2, double assignment3){
         
         this.lastName = lastName;
         this.firstName = firstName;
         this.studentID = studentID;
-        this.mark1 = mark1;
-        this.mark2 = mark2;
-        this.mark3 = mark3;
+        this.assignment1 = assignment1;
+        this.assignment2 = assignment2;
+        this.assignment3 = assignment3;
+        this.totalMarks = assignment1 + assignment2 + assignment3; //Calculate the total marks
         
     }
     
     /**
-     * methods to access the properties
+     * methods for retrieving student details
      */
-    public String getlastName(){
+    public String getLastName(){
         return lastName;
     }
     
-    public String getfirstName(){
+    public String getFirstName(){
         return firstName;
     }
     
@@ -44,12 +44,23 @@ public class Student
         return studentID;
     }
     
-    public double getTotalMarks(){
-        return mark1 + mark2 + mark3;
+    public double getAssignment1(){
+        return assignment1;
     }
     
-    @Override
-    public String toString(){
-        return lastName + " " + firstName + " (" + studentID + ") - Total Marks: " + totalMarks;
+    public double getAssignment2(){
+        return assignment2;
+    }
+    
+    public double getAssignment3(){
+        return assignment3;
+    }
+    
+    public double getTotalMarks(){
+        return totalMarks;
+    }
+    
+    public void displayStudentInfo(){
+        System.out.println(lastName + " " + firstName + "(" + studentID + ") " + "Marks: A1=" + assignment1 + ", A2=" + assignment2 + ", A3=" + assignment3 + ", Total=" + totalMarks);
     }
 }
