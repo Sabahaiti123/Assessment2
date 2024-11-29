@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=StudentData
+comment0.text=\n\ Write\ a\ description\ of\ interface\ StudentData\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=filename
+comment1.target=void\ readFromFile(java.lang.String)
+comment2.params=
+comment2.target=void\ displayAllStudents()
+comment3.params=threshold
+comment3.target=void\ filterStudentsNyThreshold(double)
+comment4.params=
+comment4.target=void\ sortAndDisplayTopAndBottomStudents()
+numComments=5
