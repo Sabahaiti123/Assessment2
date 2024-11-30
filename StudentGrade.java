@@ -13,7 +13,7 @@ public class StudentGrade implements StudentData {
     
     @Override
     public void readFromFile(String filename) throws IOException{
-        try (BufferedReader reader = new BufferedReader(new FileReader("/Users/sandysweet/Desktop/prog5001_students_grade_2022 .csv"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("/Users/sandysweet/Desktop/Assessment2/prog5001_students_grade_2022 .csv"))){
             String line = reader.readLine();
             unitName = line; // First line should be the unit name.
             reader.readLine(); //Skip the header or empty line.
@@ -58,6 +58,10 @@ public class StudentGrade implements StudentData {
      */
     @Override
     public void filterStudentsByThreshold(double threshold){
+        if(threshold < 0 || threshold > 100){
+            System.out.println("Please enter a value between 0 and 100.");
+            return; // Return from the method if the validation fails
+        }
         System.out.println("Students with total marks below " + threshold + ":");
         for(Student student : students){
             if(student.getTotalMarks() < threshold){
@@ -88,5 +92,4 @@ public class StudentGrade implements StudentData {
             students.get(i).displayStudentInfo();
         }
     }
-    
 }

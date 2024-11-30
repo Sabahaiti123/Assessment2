@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Menu
+comment0.text=\n\ This\ class\ allows\ users\ to\ read\ student\ data\ from\ a\ file,\ display\ all\ students,\ filter\ students\ by\ total\ marks,\n\ display\ top\ and\ bottom\ 5\ students\ based\ on\ their\ marks,\ and\ exit\ program.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2
