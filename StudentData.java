@@ -11,7 +11,7 @@ public interface StudentData{
     
     void displayAllStudents();
     
-    void filterStudentsNyThreshold(double threshold);
+    void filterStudentsByThreshold(double threshold);
     
     void sortAndDisplayTopAndBottomStudents();
 }

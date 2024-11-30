@@ -13,23 +13,15 @@ public class StudentGrade implements StudentData {
     
     @Override
     public void readFromFile(String filename) throws IOException{
-        File file = new File("/Users/sandysweet/Desktop/prog5001_students_grade_2022.csv");
-        // Use the filename provided as a parameter
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))){
-            String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader("/Users/sandysweet/Desktop/prog5001_students_grade_2022 .csv"))){
+            String line = reader.readLine();
+            unitName = line; // First line should be the unit name.
+            reader.readLine(); //Skip the header or empty line.
             int lineNumber = 0;
-            reader.readLine();
-            reader.readLine();
-            
             while((line = reader.readLine()) != null){
                 lineNumber++;
-                if(line.startsWith("#") || line.isEmpty())
+                if(line.startsWith("#") || line.trim().isEmpty())
                 continue; //Skip commits and empty lines
-                
-                if(unitName == null){
-                    unitName = line;
-                    continue;
-                }
                 String[] parts = line.split(",");
                 if (parts.length == 6){
                     try{
@@ -50,25 +42,22 @@ public class StudentGrade implements StudentData {
         }
     }
     
-    private double parseDoubleSafe(String value, int lineNumber, String field) throws NumberFormatException{
-        try{
-            return Double.parseDouble(value);
-        } catch (NumberFormatException e){
-            throw new NumberFormatException("Error parsing numeric data on line" + lineNumber + "for" + field + ": " + value);
-        }   
-    }
-    
-    
+    /**
+     * Display all student information, starting with the unit name.
+     */
     @Override
     public void displayAllStudents(){
-        System.out.println("Unit: " + unitName);
+        System.out.println(unitName);
         for(Student student : students){
             student.displayStudentInfo();
         }
     }
     
+    /**
+     * Filters and display studensts whose total marks are below a specified threshold.
+     */
     @Override
-    public void filterStudentsNyThreshold(double threshold){
+    public void filterStudentsByThreshold(double threshold){
         System.out.println("Students with total marks below " + threshold + ":");
         for(Student student : students){
             if(student.getTotalMarks() < threshold){
@@ -77,17 +66,25 @@ public class StudentGrade implements StudentData {
         }
     }
     
+    /**
+     * Sorts the students by total marks and display the top 5 and bottom 5 student.
+     */
+    @Override
     public void sortAndDisplayTopAndBottomStudents() {
+        if (students.size() < 5){
+            System.out.println("Not enough students to display top and bottom five.");
+            return;
+        }
+        
         students.sort(Comparator.comparingDouble(Student :: getTotalMarks));
+        
         System.out.println("Top 5 students with the highest marks: ");
-        int start = Math.max(students.size() -5, 0);
-        for (int i = start; i<students.size(); i++){
+        for (int i = students.size() - 1; i >= students.size() -5; i--){
             students.get(i).displayStudentInfo();
         }
         
         System.out.println("Top 5 students with the lowest marks: ");
-        int end = Math.max(5, students.size());
-        for (int i = 0; i < end; i++){
+        for (int i = 0; i < 5; i++){
             students.get(i).displayStudentInfo();
         }
     }
