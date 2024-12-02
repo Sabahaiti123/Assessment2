@@ -22,34 +22,36 @@ public class StudentGrade implements StudentData {
                 lineNumber++;
                 if(line.startsWith("#") || line.trim().isEmpty())
                 continue; //Skip commits and empty lines
+                
                 String[] parts = line.split(",");
-                if (parts.length == 6){
-                    try{
-                        String lastName = parts[0].trim();
-                        String firstName = parts[1].trim();
-                        String studentID = parts[2].trim();
-                        double assignment1 = Double.parseDouble(parts[3].trim());
-                        double assignment2 = Double.parseDouble(parts[4].trim());
-                        double assignment3 = Double.parseDouble(parts[5].trim());
-                        students.add(new Student(lastName, firstName, studentID, assignment1, assignment2, assignment3));
-                    } catch(NumberFormatException e){
-                        System.out.println("Skipping empty line" + lineNumber + ":" + e.getMessage());
-                    }
-                }else{
-                    System.out.println("Incorrect data format on line" + lineNumber);
+                
+                try{
+                    // Parsing individual feilds from the line
+                    String lastName = parts[0].trim();
+                    String firstName = parts[1].trim();
+                    String studentID = parts[2].trim();
+                    double assignment1 = parts.length > 3 && !parts[3].isEmpty() ? Double.parseDouble(parts[3].trim()) : 0;
+                    double assignment2 = parts.length > 4 && !parts[4].isEmpty() ? Double.parseDouble(parts[4].trim()) : 0;
+                    double assignment3 = parts.length > 5 && !parts[5].isEmpty() ? Double.parseDouble(parts[5].trim()) : 0;
+                    
+                    // Adding new student to the list
+                    students.add(new Student(lastName, firstName, studentID, assignment1, assignment2, assignment3));
+                } catch(NumberFormatException e){
+                    System.out.println("Skipping empty line" + lineNumber + ":" + e.getMessage());
+                    
                 }
             }
         }
     }
     
     /**
-     * Display all student information, starting with the unit name.
+     * Display all students information, starting with the unit name.
      */
     @Override
     public void displayAllStudents(){
         System.out.println(unitName);
         for(Student student : students){
-            student.displayStudentInfo();
+            student.displayStudentInfo(); // Display each student's details
         }
     }
     
@@ -65,7 +67,7 @@ public class StudentGrade implements StudentData {
         System.out.println("Students with total marks below " + threshold + ":");
         for(Student student : students){
             if(student.getTotalMarks() < threshold){
-                student.displayStudentInfo();
+                student.displayStudentInfo(); // Display student information if below threshold
             }
         }
     }
@@ -82,12 +84,14 @@ public class StudentGrade implements StudentData {
         
         students.sort(Comparator.comparingDouble(Student :: getTotalMarks));
         
+        // Displaying the top 5 students 
         System.out.println("Top 5 students with the highest marks: ");
-        for (int i = students.size() - 1; i >= students.size() -5; i--){
+        for (int i = students.size() -1; i >= students.size() -5; i--){
             students.get(i).displayStudentInfo();
         }
         
-        System.out.println("Top 5 students with the lowest marks: ");
+        // Displaying the bottom 5 students
+        System.out.println("Bottom 5 students with the lowest marks: ");
         for (int i = 0; i < 5; i++){
             students.get(i).displayStudentInfo();
         }
