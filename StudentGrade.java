@@ -16,8 +16,8 @@ public class StudentGrade implements StudentData {
         try (BufferedReader reader = new BufferedReader(new FileReader("/Users/sandysweet/Desktop/Assessment2/prog5001_students_grade_2022 .csv"))){
             String line = reader.readLine();
             unitName = line; // First line should be the unit name.
-            reader.readLine(); //Skip the header or empty line.
-            int lineNumber = 0;
+            reader.readLine(); //Skip the header line.
+            int lineNumber = 2; // Start from second line considering the unit name has been read
             while((line = reader.readLine()) != null){
                 lineNumber++;
                 if(line.startsWith("#") || line.trim().isEmpty())
@@ -60,10 +60,6 @@ public class StudentGrade implements StudentData {
      */
     @Override
     public void filterStudentsByThreshold(double threshold){
-        if(threshold < 0 || threshold > 100){
-            System.out.println("Please enter a value between 0 and 100.");
-            return; // Return from the method if the validation fails
-        }
         System.out.println("Students with total marks below " + threshold + ":");
         for(Student student : students){
             if(student.getTotalMarks() < threshold){
@@ -90,7 +86,7 @@ public class StudentGrade implements StudentData {
             students.get(i).displayStudentInfo();
         }
         
-        // Displaying the bottom 5 students
+        // Displaying the bottom 5 student
         System.out.println("Bottom 5 students with the lowest marks: ");
         for (int i = 0; i < 5; i++){
             students.get(i).displayStudentInfo();

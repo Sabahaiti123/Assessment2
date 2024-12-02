@@ -29,19 +29,25 @@ public class Menu
                 System.out.println("Enter choice");
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // Consume the new line character left over
-                
                 switch(choice){
                     case 1:
                         studentData.displayAllStudents();
                         break;
                     
                     case 2:
-                        System.out.print("Enter the threshold (0-100) for total marks: ");
-                        double threshold = scanner.nextDouble();
-                        scanner.nextLine(); // Consume new line
-                        studentData.filterStudentsByThreshold(threshold);
+                        double threshold; // Declare threshold here to keep it in scope only where needed
+                        do{
+                            System.out.print("Enter the threshold (0-100) for total marks: ");
+                            threshold = scanner.nextDouble();
+                            scanner.nextLine(); // Consume the newline character to prevent input skipping
+                            if(threshold < 0 || threshold > 100){
+                                System.out.println("Please enter a value between 0 and 100.");
+                            }else{
+                                studentData.filterStudentsByThreshold(threshold);
+                                break;
+                            }
+                        } while (threshold < 0 || threshold > 100);
                         break;
-                    
                     case 3:
                         studentData.sortAndDisplayTopAndBottomStudents();
                         break;
